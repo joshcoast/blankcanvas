@@ -8,6 +8,7 @@
     <title>Sample FirebaseUI App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -26,7 +27,7 @@
     <script type="text/javascript">
         // FirebaseUI config.
         var uiConfig = {
-            signInSuccessUrl: 'profile.html',
+            signInSuccessUrl: 'signup.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -42,13 +43,21 @@
 </head>
 
 <body>
-         <div class="valign-wraper">
-                <form class="col s12">
-                    <div class="row center">
-                        <h3> Welcome to Blank Canvas!</h3><br>
-                        <h5>Sign Up or Sign In</h5>
+    <div class="container center">
+        <div class="row">
+            <h3> Welcome to Blank Canvas!</h3>
+            <div class="col s10 m8 l6 card grey lighten-5">
+                <div class="card-content">
+                    <span class="card-title">Sign Up/Sign In!</span>
+                    </div>
+                    <div class="card-action">
                         <div id="firebaseui-auth-container"></div>
-                        <!-- <div class="input-field col s12">
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="input-field col s12">
                         <input id="email" type="email" class="validate" placeholder="Email">
                         </div>
                     </div>
@@ -65,12 +74,7 @@
                         <a class="grey-text " href="signup.html">Sign up with Facebook!</a>
                     </div>
                 </form> -->
-            </div>
-</body>
-
-</html>         </form>
-            </div>
-    <div id="firebaseui-auth-container"></div>
 </body>
 
 </html>
+</body>
