@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sample FirebaseUI App</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -27,7 +24,7 @@
     <script type="text/javascript">
         // FirebaseUI config.
         var uiConfig = {
-            signInSuccessUrl: 'signup.html',
+            signInSuccessUrl: 'portfolio.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -40,40 +37,63 @@
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <div class="container center">
+    <div class="container loginContainer center">
         <div class="row">
             <h3> Welcome to Blank Canvas!</h3>
-            <div class="col s10 m8 l6 card grey lighten-5">
-                <div class="card-content">
-                    <span class="card-title">Sign Up/Sign In!</span>
+            <div class="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
+                <div class="card grey lighten-5">
+                    <div class="card-content">
+                        <span class="card-title">Sign Up/Sign In!</span>
                     </div>
                     <div class="card-action">
                         <div id="firebaseui-auth-container"></div>
-                    </div> 
+                        Don't have an account?
+                        <br>
+                        <a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" placeholder="Email">
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" placeholder="Password">
-                        </div>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Log in
-                            <i class="material-icons right"></i>
-                    </button>
-                    <div class="row"></div>
-                        <a class="grey-text " href="signup.html">Sign up with Facebook!</a>
-                    </div>
-                </form> -->
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <div id="firebaseui-auth-container"></div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').modal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    alert("Ready");
+                    console.log(modal, trigger);
+                },
+                complete: function () { alert('Closed'); } // Callback for Modal close
+            }
+            );
+        });
+    </script>
 </body>
 
 </html>
