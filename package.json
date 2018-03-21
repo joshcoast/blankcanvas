@@ -1,0 +1,23 @@
+{
+  "name": "blankcanvas",
+  "version": "1.0.0",
+  "description": "Blank Canvas JSON",
+  "main": "index.js",
+  "dependencies": {
+    "npm": "^5.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshcoast/blankcanvas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshcoast/blankcanvas/issues"
+  },
+  "homepage": "https://github.com/joshcoast/blankcanvas#readme"
+}
