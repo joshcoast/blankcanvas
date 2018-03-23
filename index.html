@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -64,55 +65,89 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    <div class="container loginContainer center">
+    <nav class="nav-extended">
+   
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down" id="nav-mobile">
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Features</a>
+                </li>
+            </ul>
+            <ul id="dropdown1" class="dropdown-content">
+                    <li>
+                        <a href="#!">Login</a>
+                    </li>
+                    <li>
+                        <a href="#!">Create an Account!</a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="homeImage">
         <div class="row">
-            <h3> Welcome to Blank Canvas!</h3>
-            <div class="col s10 offset-s1 m8 offset-m2 l6 offset-l3">
-                <div class="card grey lighten-5">
-                    <div class="card-content">
-                        <span class="card-title">Sign in.</span>
-                    </div>
-                    <div class="card-action">
-                        <div id="firebaseui-auth-container"></div>
-                        Don't have an account?
-                        <br>
-                        <a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
-                    </div>
+            <div class="col s10 offset-s1">
+                <div class="text-white center">
+                    <h3 class="black-text center">Welcome to Blank Canvas.</h3>
                 </div>
             </div>
         </div>
     </div>
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <hr>
+                <h3 class="center">Features</h3>
+                <a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
+            </div>
+        </div>
+    </div>
     <!-- Modal Structure -->
-    <div id="modal1" class="modal">
+    <div id="modal1" class="modal blank">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <div id="firebaseui-auth-container"></div>
+            <h4 class="center">Get the latest by signing up.</h4>
+            <p id="firebaseui-auth-container"></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
         </div>
     </div>
 
 
 
+
     <script>
+
+
         $(document).ready(function () {
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').modal({
-                dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
+            $('.modal').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .1, // Opacity of modal background
                 inDuration: 300, // Transition in duration
                 outDuration: 200, // Transition out duration
                 startingTop: '4%', // Starting top style attribute
                 endingTop: '10%', // Ending top style attribute
                 ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                    alert("Ready");
                     console.log(modal, trigger);
                 },
-                complete: function () { alert('Closed'); } // Callback for Modal close
             }
             );
         });
+
     </script>
 </body>
 
