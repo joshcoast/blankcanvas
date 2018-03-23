@@ -73,7 +73,7 @@
                         <span class="card-title">Sign in.</span>
                     </div>
                     <div class="card-action">
-                        <div id="firebaseui-auth-container"></div>
+                        <!-- <div id="firebaseui-auth-container"></div> -->
                         Don't have an account?
                         <br>
                         <a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
@@ -85,34 +85,36 @@
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <div id="firebaseui-auth-container"></div>
+            <h4 class="center">Get the latest by signing up.</h4>
+            <p id="firebaseui-auth-container"></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
         </div>
     </div>
 
 
 
+
     <script>
+
+
         $(document).ready(function () {
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').modal({
-                dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
+            $('.modal').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .1, // Opacity of modal background
                 inDuration: 300, // Transition in duration
                 outDuration: 200, // Transition out duration
                 startingTop: '4%', // Starting top style attribute
                 endingTop: '10%', // Ending top style attribute
                 ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                    alert("Ready");
                     console.log(modal, trigger);
                 },
-                complete: function () { alert('Closed'); } // Callback for Modal close
             }
             );
         });
+
     </script>
 </body>
 
