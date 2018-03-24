@@ -1,65 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.12.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.12.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.12.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.12.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.12.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Blank Canvas</title>
+	<!-- Style links -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<link type="text/css" rel="stylesheet" href="public/assets/css/style.css">
+	<!-- scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+	<script src="public/assets/javascript/logic.js"></script>
+</head>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+<body>
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '337404550101963',
+				xfbml: true,
+				version: 'v2.12'
+			});
+			FB.AppEvents.logPageView();
+		};
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<nav class="nav-extended">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse">
+				<i class="material-icons">menu</i>
+			</a>
+			<ul class="left hide-on-med-and-down" id="nav-mobile">
+				<li class="active">
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">Features</a>
+				</li>
+			</ul>
+			<ul id="dropdown1" class="dropdown-content">
+				<li>
+					<a href="#!">Login</a>
+				</li>
+				<li>
+					<a href="#!">Create an Account!</a>
+				</li>
+				<li class="divider"></li>
+			</ul>
+			<ul class="right hide-on-med-and-down">
+				<li>
+					<a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
+						<i class="material-icons right">arrow_drop_down</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="homeImage">
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="text-white center">
+					<h3 class="black-text center">Welcome to Blank Canvas.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s10 offset-s1">
+			<hr>
+			<h3 class="center">Features</h3>
+			<a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
+		</div>
+	</div>
+	</div>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal blank">
+		<div class="modal-content">
+			<h4 class="center">Get the latest by signing up.</h4>
+			<p id="firebaseui-auth-container"></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+		</div>
+	</div>
+</body>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
 </html>
+</body>
