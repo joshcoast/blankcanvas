@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Style links -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/style.css">
+	<!-- scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+	<script src="assets/javascript/logic.js"></script>
 </head>
+
 <body>
   <div class="container">
     <div class="row">
-        <form class="col s12">
-            <div class="row">
-              <h3>Lets get you started!</h3>
-            </div>
-            <div class="row">
-              <p>Pick your media:</p>
-              <a class="waves-effect waves-light btn" id="twoDart">2D Art</a>
-              <a class="waves-effect waves-light btn" id="threeDart">3D Art</a>
-              <a class="waves-effect waves-light btn" id="graphicArt">Graphic Art</a>
-            </div>
-            <div class="row">
-            <div class ="row">
-                <p>What Are you interested in?</p>
-                <form action="#">
-                    <p>
-                      <input name="group1" type="radio" id="test1" />
-                      <label for="test1">Art Exhibits</label>
-                    </p>
-                    <p>
-                      <input name="group2" type="radio" id="test2" />
-                      <label for="test2">Artists Calls</label>
-                    </p>
-                    <p>
-                      <input class="with-gap" name="group3" type="radio" id="test3"  />
-                      <label for="test3">Artists Near Me</label>
-                    </p>
-                    <p>
-                      <input name="group4" type="radio" id="test4" disabled="disabled" />
-                      <label for="test4">Grant Deadlines</label>
-                    </p>
-                    <p>
-                        <input name="group5" type="radio" id="test4" disabled="disabled" />
-                        <label for="test4">Events</label>
-                    </p>
-                </form>
-              </div>
-              <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit your interests!
-                  <i class="material-icons right"></i>
-              </button>
-            </div>
-
-        
-      </div>
-    </div> 
-    <script>
-    
-
-  </script>    
+      <form class="col s12">
+        <div class="row">
+          <h3>Lets get you started!</h3>
+        </div>
+        <div class="row">
+          <p>Pick your media:</p>
+          <a class="waves-effect waves-light btn" id="twoDart">2D Art</a>
+          <a class="waves-effect waves-light btn" id="threeDart">3D Art</a>
+          <a class="waves-effect waves-light btn" id="graphicArt">Graphic Art</a>
+        </div>
+        <div class="row">
+          <div class="row">
+            <p>What Are you interested in?</p>
+            <form action="#">
+              <p>
+                <input name="group1" type="radio" id="test1" />
+                <label for="test1">Art Exhibits</label>
+              </p>
+              <p>
+                <input name="group2" type="radio" id="test2" />
+                <label for="test2">Artists Calls</label>
+              </p>
+              <p>
+                <input class="with-gap" name="group3" type="radio" id="test3" />
+                <label for="test3">Artists Near Me</label>
+              </p>
+              <p>
+                <input name="group4" type="radio" id="test4" disabled="disabled" />
+                <label for="test4">Grant Deadlines</label>
+              </p>
+              <p>
+                <input name="group5" type="radio" id="test4" disabled="disabled" />
+                <label for="test4">Events</label>
+              </p>
+            </form>
+          </div>
+          <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit your interests!
+            <i class="material-icons right"></i>
+          </button>
+        </div>
+    </div>
+  </div>
+  <script>
+  </script>
 </body>
+
 </html>
