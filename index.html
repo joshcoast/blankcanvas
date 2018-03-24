@@ -2,153 +2,103 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blank Canvas</title>
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCjtkoViUWyLVJYP_NfVaqO8tJoKbvIRj8",
-            authDomain: "blankcanvas-43876.firebaseapp.com",
-            databaseURL: "https://blankcanvas-43876.firebaseio.com",
-            projectId: "blankcanvas-43876",
-            storageBucket: "blankcanvas-43876.appspot.com",
-            messagingSenderId: "784751662446"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
-    <script type="text/javascript">
-        // FirebaseUI config.
-        var uiConfig = {
-            signInSuccessUrl: 'profile-page.html',
-            signInOptions: [
-                // Leave the lines as is for the providers you want to offer your users.
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-            ],
-        };
-        // Initialize the FirebaseUI Widget using Firebase.
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        // The start method will wait until the DOM is loaded.
-        ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Blank Canvas</title>
+	<!-- Style links -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/style.css">
+	<!-- scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+	<script src="assets/javascript/logic.js"></script>
 </head>
 
 <body>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '337404550101963',
-                xfbml: true,
-                version: 'v2.12'
-            });
-
-            FB.AppEvents.logPageView();
-
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <nav class="nav-extended">
-   
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="left hide-on-med-and-down" id="nav-mobile">
-                <li class="active">
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Features</a>
-                </li>
-            </ul>
-            <ul id="dropdown1" class="dropdown-content">
-                    <li>
-                        <a href="#!">Login</a>
-                    </li>
-                    <li>
-                        <a href="#!">Create an Account!</a>
-                    </li>
-                    <li class="divider"></li>
-                </ul>
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="homeImage">
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <div class="text-white center">
-                    <h3 class="black-text center">Welcome to Blank Canvas.</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="row">
-            <div class="col s10 offset-s1">
-                <hr>
-                <h3 class="center">Features</h3>
-                <a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal blank">
-        <div class="modal-content">
-            <h4 class="center">Get the latest by signing up.</h4>
-            <p id="firebaseui-auth-container"></p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
-        </div>
-    </div>
-
-
-
-
-    <script>
-
-
-        $(document).ready(function () {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal({
-                dismissible: false, // Modal can be dismissed by clicking outside of the modal
-                opacity: .1, // Opacity of modal background
-                inDuration: 300, // Transition in duration
-                outDuration: 200, // Transition out duration
-                startingTop: '4%', // Starting top style attribute
-                endingTop: '10%', // Ending top style attribute
-                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                    console.log(modal, trigger);
-                },
-            }
-            );
-        });
-
-    </script>
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '337404550101963',
+				xfbml: true,
+				version: 'v2.12'
+			});
+			FB.AppEvents.logPageView();
+		};
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<nav class="nav-extended">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse">
+				<i class="material-icons">menu</i>
+			</a>
+			<ul class="left hide-on-med-and-down" id="nav-mobile">
+				<li class="active">
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">Features</a>
+				</li>
+			</ul>
+			<ul id="dropdown1" class="dropdown-content">
+				<li>
+					<a href="#!">Login</a>
+				</li>
+				<li>
+					<a href="#!">Create an Account!</a>
+				</li>
+				<li class="divider"></li>
+			</ul>
+			<ul class="right hide-on-med-and-down">
+				<li>
+					<a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
+						<i class="material-icons right">arrow_drop_down</i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="homeImage">
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="text-white center">
+					<h3 class="black-text center">Welcome to Blank Canvas.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s10 offset-s1">
+			<hr>
+			<h3 class="center">Features</h3>
+			<a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
+		</div>
+	</div>
+	</div>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal blank">
+		<div class="modal-content">
+			<h4 class="center">Get the latest by signing up.</h4>
+			<p id="firebaseui-auth-container"></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+		</div>
+	</div>
 </body>
 
 </html>
