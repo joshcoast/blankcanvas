@@ -9,21 +9,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// FirebaseUI config.
-var uiConfig = {
-	signInSuccessUrl: '../../profile-page.html',
-	signInOptions: [
-		// Leave the lines as is for the providers you want to offer your users.
-		firebase.auth.EmailAuthProvider.PROVIDER_ID,
-		firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-		firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-	],
-};
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
 
 $(document).ready(function () {
 
@@ -38,7 +23,7 @@ $(document).ready(function () {
 			// No user is signed in.
 		}
 	});
-	
+
 	if (user != null) {
 		name = user.displayName;
 		email = user.email;
@@ -53,16 +38,50 @@ $(document).ready(function () {
 	console.log("uid: " + uid);
 	console.log("photoUrl: " + photoUrl);
 
-	// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-	$('.modal').modal({
-		dismissible: false, // Modal can be dismissed by clicking outside of the modal
-		opacity: .1, // Opacity of modal background
-		inDuration: 300, // Transition in duration
-		outDuration: 200, // Transition out duration
-		startingTop: '4%', // Starting top style attribute
-		endingTop: '10%', // Ending top style attribute
-		ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-			console.log(modal, trigger);
-		},
+
+
+	// Moved form profile page to here TODO find out what this is
+	$('.slider').slider();
+	$('.collapsible').collapsible();
+	$(".button-collapse").sideNav();
+	// Chips:
+	var chip = {
+		tag: 'chip content',
+		image: '', //optional
+		id: 1, //optional
+	};
+	$('.chips').on('chip.add', function (e, chip) {
+		// you have the added chip here
+	});
+	$('.chips').on('chip.delete', function (e, chip) {
+		// you have the deleted chip here
+	});
+	$('.chips').on('chip.select', function (e, chip) {
+		// you have the selected chip here
+	});
+	$('.chips').material_chip();
+	$('.chips-initial').material_chip({
+		data: [{
+			tag: 'Apple',
+		}, {
+			tag: 'Microsoft',
+		}, {
+			tag: 'Google',
+		}],
+	});
+	$('.chips-placeholder').material_chip({
+		placeholder: 'Enter an interest',
+		secondaryPlaceholder: '+Tag',
+	});
+	$('.chips-autocomplete').material_chip({
+		autocompleteOptions: {
+			data: {
+				'Apple': null,
+				'Microsoft': null,
+				'Google': null
+			},
+			limit: Infinity,
+			minLength: 1
+		}
 	});
 }); // end doc ready
