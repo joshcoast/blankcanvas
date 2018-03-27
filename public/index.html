@@ -9,7 +9,8 @@
 	<!-- Style links -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+	/>
 	<link type="text/css" rel="stylesheet" href="assets/css/style.css"> </head>
 
 <body>
@@ -33,65 +34,85 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	<nav class="nav-extended">
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul class="left hide-on-med-and-down" id="nav-mobile">
-				<li class="active">
-					<a href="#">Home</a>
-				</li>
-				<li>
-					<a href="#">Features</a>
-				</li>
-			</ul>
-			<ul id="dropdown1" class="dropdown-content">
-				<li>
-					<a href="#!">Login</a>
-				</li>
-				<li>
-					<a href="#!">Create an Account!</a>
-				</li>
-				<li class="divider"></li>
-			</ul>
-			<ul class="right hide-on-med-and-down">
-				<li>
-					<a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
-						<i class="material-icons right">arrow_drop_down</i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+
 	<div class="homeImage">
+		<nav class="nav-extended blue" id="navbarscroll">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo center logoText text-indigo text-darken-2">Blank Canvas</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul class="left hide-on-med-and-down" id="nav-mobile">
+					<li class="active">
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#">Features</a>
+					</li>
+				</ul>
+				<ul id="dropdown1" class="dropdown-content">
+					<li>
+						<a href="#!">Login</a>
+					</li>
+					<li>
+						<a href="#!">Create an Account!</a>
+					</li>
+					<li class="divider"></li>
+				</ul>
+				<ul class="right hide-on-med-and-down">
+					<li>
+						<a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
+							<i class="material-icons right">arrow_drop_down</i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		<div class="row">
 			<div class="col s10 offset-s1">
-				<div class="text-white center">
-					<h3 class="black-text center">Welcome to Blank Canvas.</h3>
+				<div class="text-white center"><br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					
+					<h4 class="white-text center">Welcome to Blank Canvas.</h4>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col s10 offset-s1">
-			<hr>
-			<h3 class="center">Features</h3>
-			<a class="waves-effect waves-light btn pink accent-3 modal-trigger" data-target="modal1">Sign Up</a>
+	<div class="featureImage">
+
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<div class="text-white center">
+					<h4 class="white-text center">Features</h4><br>
+					<a class="waves-effect waves-light btn indigo darken-2 modal-trigger center" data-target="modal1">Sign Up</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Structure -->
+		<div id="modal1" class="modal blank">
+			<div class="modal-content">
+				<h4 class="center">Get the latest by signing up.</h4>
+				<p id="firebaseui-auth-container"></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+			</div>
 		</div>
 	</div>
-	</div>
-	<!-- Modal Structure -->
-	<div id="modal1" class="modal blank">
-		<div class="modal-content">
-			<h4 class="center">Get the latest by signing up.</h4>
-			<p id="firebaseui-auth-container"></p>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
-		</div>
-	</div>
+
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
