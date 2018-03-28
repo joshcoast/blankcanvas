@@ -91,4 +91,51 @@ $(document).ready(function () {
 			minLength: 1
 		}
 	});
+
+	//image upload 
+
+	//Get elements
+	var uploader = $("#uploader");
+	var fileButton = $("#fileButton");
+
+	//Listen for file selection
+	fileButton.on("click", function(e){
+		// Get the file
+		var file = e.target.files[0];
+
+		// Create a storage ref
+		var storageRef = firebase.storage().ref("profile_pic/" + file.name);
+
+		// Upload file
+		var task = storageRef.put(file);
+
+		// Update progress bar 
+		task.on('state_changed', 
+			function progress(snapshot) {
+				var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				uploader.value = percentage;
+			},
+		);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }); // end doc ready
