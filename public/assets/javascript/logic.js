@@ -48,6 +48,7 @@ $(document).ready(function () {
 
 
 	// Moved form profile page to here TODO find out what this is
+	$(".dropdown-button").dropdown();
 	$('.slider').slider();
 	$('.collapsible').collapsible();
 	$(".button-collapse").sideNav();
