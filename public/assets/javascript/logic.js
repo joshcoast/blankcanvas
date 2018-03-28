@@ -99,9 +99,10 @@ $(document).ready(function () {
 	var fileButton = $("#fileButton");
 
 	//Listen for file selection
-	fileButton.on("click", function(e){
+	fileButton.on("change", function(e){
 		// Get the file
 		var file = e.target.files[0];
+		console.log(e.target.files[0].name);
 
 		// Create a storage ref
 		var storageRef = firebase.storage().ref("profile_pic/" + file.name);
@@ -111,10 +112,17 @@ $(document).ready(function () {
 
 		// Update progress bar 
 		task.on('state_changed', 
+
 			function progress(snapshot) {
 				var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 				uploader.value = percentage;
 			},
+			function error(err) {
+				
+			},
+			function complete() {
+
+			}
 		);
 	});
 
