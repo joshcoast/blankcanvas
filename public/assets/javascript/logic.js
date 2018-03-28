@@ -9,6 +9,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
+// Scroll effect for nav bar
 window.addEventListener('scroll', function () {
 	document.body.classList[
 	  window.scrollY > 20 ? 'add': 'remove'

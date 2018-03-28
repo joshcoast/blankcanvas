@@ -35,7 +35,7 @@
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 
-	<div class="homeImage">
+	<div class="homeImage valign-wrapper center-align center">
 		<nav class="nav-extended blue" id="navbarscroll">
 			<div class="nav-wrapper">
 				<a href="#!" class="brand-logo center logoText text-indigo text-darken-2">Blank Canvas</a>
@@ -47,7 +47,7 @@
 						<a href="#">Home</a>
 					</li>
 					<li>
-						<a href="#">Features</a>
+						<a href="#features">Features</a>
 					</li>
 				</ul>
 				<ul id="dropdown1" class="dropdown-content">
@@ -68,34 +68,16 @@
 				</ul>
 			</div>
 		</nav>
-		<div class="row">
-			<div class="col s10 offset-s1">
-				<div class="text-white center"><br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					
-					<h4 class="white-text center">Welcome to Blank Canvas.</h4>
-				</div>
-			</div>
-		</div>
+		<h4 class="white-text introCopy">Welcome to Blank Canvas.</h4>
 	</div>
 	<div class="featureImage">
-
 		<div class="row">
 			<div class="col s10 offset-s1">
 				<div class="text-white center">
-					<h4 class="white-text center">Features</h4><br>
+					<a name="features">
+						<h4 class="white-text align-right">Features</h4>
+						<br>
+					</a>
 					<a class="waves-effect waves-light btn indigo darken-2 modal-trigger center" data-target="modal1">Sign Up</a>
 				</div>
 			</div>
@@ -118,6 +100,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
 	<script src="assets/javascript/logic.js"></script>
+	<script src="assets/javascript/index.js"></script>
 	<script>
 		// FirebaseUI config.
 		var uiConfig = {
