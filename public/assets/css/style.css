@@ -13,6 +13,16 @@ body, html {
     top: 0;
 }
 
+.card-panel {
+	opacity: .2;
+	transition: opacity .5s;
+}
+
+.card-panel:hover {
+	opacity: 1;
+	transition: opacity .5s;
+}
+
 .introCopy {
 	padding: 25%;
 	margin: 0 auto;
