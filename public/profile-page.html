@@ -46,7 +46,7 @@
                 <p>Denver, Colorado</p>
                 <h5>www.website.com</h5>
               </div>
-              <a class="btn-floating right btn-medium red EditElement">
+              <a class="btn-floating right btn-medium red EditElement modal-trigger" data-target="modal1" id="profileEdit">
                 <i class="large material-icons">mode_edit</i>
               </a>
             </div>
@@ -194,11 +194,31 @@
         <div class="col s12 m4 l3"></div>
       </div>
     </div>
-	</div>
-	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
-	<script src="assets/javascript/logic.js"></script>
+  </div>
+
+  <!-- Modal for Profile Edit -->
+  <div id="modal1" class="modal blue white-text">
+    <div class="modal-content">
+      <form>
+        <tr>
+          <td>Name:</td>
+          <td>Title:</td>
+          <td>Location:</td>
+          <td>Website:</td>
+          <td>Upload User Image:</td>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+    </div>
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+  <script src="assets/javascript/logic.js"></script>
 </body>
+
 </html>

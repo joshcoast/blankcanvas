@@ -25,25 +25,24 @@ $(document).ready(function () {
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user) {
 			// User is signed in.
+			console.log("user: " + firebase.auth().currentUser.displayName);
+			console.log("email: " + firebase.auth().currentUser.email);
+			console.log("uid: " + firebase.auth().currentUser.uid);
+			console.log("photoUrl: " + firebase.auth().currentUser.photoUrl);
+			if (user != null) {
+				name = user.displayName;
+				email = user.email;
+				photoUrl = user.photoURL;
+				emailVerified = user.emailVerified;
+				uid = uid; // The user's ID, unique to the Firebase project. Do NOT use
+				// this value to authenticate with your backend server, if
+				// you have one. Use User.getToken() instead.
+			}
 		} else {
 			// window.location.href="../../index.html"
 			// No user is signed in.
 		}
 	});
-
-	if (user != null) {
-		name = user.displayName;
-		email = user.email;
-		photoUrl = user.photoURL;
-		emailVerified = user.emailVerified;
-		uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
-		// this value to authenticate with your backend server, if
-		// you have one. Use User.getToken() instead.
-	}
-	console.log("user: " + user);
-	console.log("email: " + email);
-	console.log("uid: " + uid);
-	console.log("photoUrl: " + photoUrl);
 
 
 

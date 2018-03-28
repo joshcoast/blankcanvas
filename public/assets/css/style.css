@@ -13,6 +13,11 @@ body, html {
     top: 0;
 }
 
+.bottomArrow {
+	position: fixed;
+	bottom: 5px;
+}
+
 .card {
 	opacity: .7;
 	transition: opacity .5s;
