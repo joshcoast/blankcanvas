@@ -94,14 +94,14 @@ $(document).ready(function () {
 		}
 	});
 
-	//image upload 
+	// -- Image Upload -- //
 
 	//Get elements
 	var uploader = $("#uploader");
 	var fileButton = $("#fileButton");
 
 	//Listen for file selection
-	fileButton.on("change", function(e){
+	fileButton.on("change", function (e) {
 		// Get the file
 		var file = e.target.files[0];
 		console.log(e.target.files[0].name);
@@ -113,17 +113,21 @@ $(document).ready(function () {
 		var task = storageRef.put(file);
 
 		// Update progress bar 
-		task.on('state_changed', 
+		task.on('state_changed',
 
 			function progress(snapshot) {
 				var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 				uploader.value = percentage;
 			},
 			function error(err) {
-				
+
 			},
 			function complete() {
-
+				var downloadURL = task.snapshot.downloadURL;
+				console.log("---");
+				console.log(downloadURL);
+				console.log("---");
+				$("#profilePicture").attr("src", downloadURL);
 			}
 		);
 	});
