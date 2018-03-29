@@ -8,14 +8,16 @@ var config = {
 	messagingSenderId: "784751662446"
 };
 firebase.initializeApp(config);
+var database = firebase.database();
+
 
 
 // Scroll effect for nav bar
 window.addEventListener('scroll', function () {
 	document.body.classList[
-	  window.scrollY > 20 ? 'add': 'remove'
+		window.scrollY > 20 ? 'add' : 'remove'
 	]('scrolled');
-  });
+});
 
 $(document).ready(function () {
 

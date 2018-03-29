@@ -80,11 +80,11 @@
               <div class="col m4 s12  ">
                 <img src="assets/images/placeholder-profile.jpg" alt="" class="ProfileImg circle ">
               </div>
-              <div class="col m8 s12 ">
-                <h4>Name Last Name</h4>
-                <h5>Painter and Illsutrator</h5>
-                <p>Denver, Colorado</p>
-                <h5>www.website.com</h5>
+              <div class="col m8 s12 userInfo">
+                <h4 id="userName">Name Last Name</h4>
+                <h5 id="userTitle">Painter and Illustrator</h5>
+                <p id ="userLocation">Denver, Colorado</p>
+                <h5 id="userSite">www.website.com</h5>
               </div>
               <a class="btn-floating right btn-medium red EditElement">
                 <i class="large material-icons">mode_edit</i>
@@ -222,22 +222,21 @@
 </body>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-<script src="assets/javascript/logic.js"></script>
 <script>
   $(document).ready(function () {
 
 
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDY8i3rOXYDnUfBhIa014qUOz_J1rXE5_o",
-      authDomain: "blank-canvas-sea-1521595169015.firebaseapp.com",
-      databaseURL: "https://blank-canvas-sea-1521595169015.firebaseio.com",
-      projectId: "blank-canvas-sea-1521595169015",
-      storageBucket: "blank-canvas-sea-1521595169015.appspot.com",
-      messagingSenderId: "683989688813"
-    };
-    firebase.initializeApp(config);
-    var database = firebase.database();
+    // var config = {
+    //   apiKey: "AIzaSyDY8i3rOXYDnUfBhIa014qUOz_J1rXE5_o",
+    //   authDomain: "blank-canvas-sea-1521595169015.firebaseapp.com",
+    //   databaseURL: "https://blank-canvas-sea-1521595169015.firebaseio.com",
+    //   projectId: "blank-canvas-sea-1521595169015",
+    //   storageBucket: "blank-canvas-sea-1521595169015.appspot.com",
+    //   messagingSenderId: "683989688813"
+    // };
+    // firebase.initializeApp(config);
+    // var database = firebase.database();
 
 
 
@@ -326,5 +325,7 @@
     });
   });
 </script>
+<script src="assets/javascript/logic.js"></script>
+
 
 </html>
