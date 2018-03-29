@@ -83,4 +83,9 @@ body.scrolled #navbarscroll:hover {
 	margin-right: 20px
 }
 
+#map {
+	width: 200px;
+	height: 200px;
+}
+
 /*-- upload image (temp) --*/
