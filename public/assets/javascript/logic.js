@@ -41,8 +41,7 @@ $(document).ready(function () {
 				// you have one. Use User.getToken() instead.
 			}
 		} else {
-			// window.location.href="../../index.html"
-			// No user is signed in.
+			console.log("User not signed in.");
 		}
 	});
 

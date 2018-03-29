@@ -83,12 +83,93 @@
               <div class="col m8 s12 userInfo">
                 <h4 id="userName">Name Last Name</h4>
                 <h5 id="userTitle">Painter and Illustrator</h5>
-                <p id ="userLocation">Denver, Colorado</p>
+                <p id="userLocation">Denver, Colorado</p>
                 <h5 id="userSite">www.website.com</h5>
               </div>
-              <a class="btn-floating right btn-medium red EditElement">
+              <a class="btn-floating right btn-medium red EditElement modal-trigger" data-target="modal3">
                 <i class="large material-icons">mode_edit</i>
               </a>
+              <!-- Modal Structure -->
+              <div id="modal3" class="modal blank">
+                <div class="modal-content">
+                  <div class="row">
+                    <form class="col s12">
+
+                      <div class="row">
+                        <div class="input-field col s6">
+                          <i class="material-icons prefix">account_circle</i>
+                          <input id="first_name" type="text" class="validate">
+                          <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                          <input id="last_name" type="text" class="validate">
+                          <label for="last_name">Last Name</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="name" type="text" class="validate">
+                          <label for="title">Title</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="website" type="text" class="validate">
+                          <label for="website">Website</label>
+                        </div>
+                      </div>
+                      <div class="file-field input-field">
+                        <div class="btn">
+                          <span>Upload File</span>
+                          <input type="file" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Accept Changes?</a>
+                </div>
+              </div>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+              <script>
+                $(document).ready(function () {
+                  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+                  $('.modal').modal();
+                });
+
+                $('.modal').modal({
+                  dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                  opacity: .5, // Opacity of modal background
+                  inDuration: 300, // Transition in duration
+                  outDuration: 200, // Transition out duration
+                  startingTop: '4%', // Starting top style attribute
+                  endingTop: '10%', // Ending top style attribute
+                  ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    alert("Ready");
+                    console.log(modal, trigger);
+                  },
+                  complete: function () { alert('Closed'); } // Callback for Modal close
+                }
+                );
+
+
+              </script>
+
+
+
             </div>
           </div>
 
@@ -222,6 +303,7 @@
 </body>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script src="assets/javascript/logic.js"></script>
 <script>
   $(document).ready(function () {
 
@@ -299,7 +381,6 @@
                                         </li>`
           )
         };
-
       });
     });
 
@@ -325,7 +406,6 @@
     });
   });
 </script>
-<script src="assets/javascript/logic.js"></script>
 
 
 </html>
