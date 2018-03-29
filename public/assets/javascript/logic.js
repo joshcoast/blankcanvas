@@ -21,10 +21,11 @@ window.addEventListener('scroll', function () {
 
 $(document).ready(function () {
 
-	var user = firebase.auth().currentUser;
 	var name, email, photoUrl, uid, emailVerified;
+	var user = firebase.auth().currentUser;
 
 	firebase.auth().onAuthStateChanged(function (user) {
+		// database.ref().push({user});
 		if (user) {
 			// User is signed in.
 			console.log("user: " + firebase.auth().currentUser.displayName);
