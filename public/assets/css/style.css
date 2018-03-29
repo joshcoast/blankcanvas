@@ -13,12 +13,17 @@ body, html {
     top: 0;
 }
 
-.card-panel {
-	opacity: .4;
+.bottomArrow {
+	position: fixed;
+	bottom: 5px;
+}
+
+.card {
+	opacity: .7;
 	transition: opacity .5s;
 }
 
-.card-panel:hover {
+.card:hover {
 	opacity: 1;
 	transition: opacity .5s;
 }

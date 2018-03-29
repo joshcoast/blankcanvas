@@ -8,14 +8,16 @@ var config = {
 	messagingSenderId: "784751662446"
 };
 firebase.initializeApp(config);
+var database = firebase.database();
+
 
 
 // Scroll effect for nav bar
 window.addEventListener('scroll', function () {
 	document.body.classList[
-	  window.scrollY > 20 ? 'add': 'remove'
+		window.scrollY > 20 ? 'add' : 'remove'
 	]('scrolled');
-  });
+});
 
 $(document).ready(function () {
 
@@ -25,29 +27,29 @@ $(document).ready(function () {
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user) {
 			// User is signed in.
+			console.log("user: " + firebase.auth().currentUser.displayName);
+			console.log("email: " + firebase.auth().currentUser.email);
+			console.log("uid: " + firebase.auth().currentUser.uid);
+			console.log("photoUrl: " + firebase.auth().currentUser.photoUrl);
+			if (user != null) {
+				name = user.displayName;
+				email = user.email;
+				photoUrl = user.photoURL;
+				emailVerified = user.emailVerified;
+				uid = uid; // The user's ID, unique to the Firebase project. Do NOT use
+				// this value to authenticate with your backend server, if
+				// you have one. Use User.getToken() instead.
+			}
 		} else {
 			// window.location.href="../../index.html"
 			// No user is signed in.
 		}
 	});
 
-	if (user != null) {
-		name = user.displayName;
-		email = user.email;
-		photoUrl = user.photoURL;
-		emailVerified = user.emailVerified;
-		uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
-		// this value to authenticate with your backend server, if
-		// you have one. Use User.getToken() instead.
-	}
-	console.log("user: " + user);
-	console.log("email: " + email);
-	console.log("uid: " + uid);
-	console.log("photoUrl: " + photoUrl);
-
 
 
 	// Moved form profile page to here TODO find out what this is
+	$(".dropdown-button").dropdown();
 	$('.slider').slider();
 	$('.collapsible').collapsible();
 	$(".button-collapse").sideNav();

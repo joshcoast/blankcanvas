@@ -36,6 +36,15 @@
 	</script>
 
 	<div class="homeImage valign-wrapper center-align center">
+		<ul id="dropdown1" class="dropdown-content blue lighten-2">
+			<li>
+				<a class="white-text modal-trigger" data-target="modal1">Login</a>
+			</li>
+			<li>
+				<a class="white-text modal-trigger" data-target="modal1">Create Account!</a>
+			</li>
+			<li class="divider"></li>
+		</ul>
 		<nav class="nav-extended blue" id="navbarscroll">
 			<div class="nav-wrapper">
 				<a href="#!" class="brand-logo center logoText text-indigo text-darken-2">Blank Canvas</a>
@@ -44,31 +53,30 @@
 				</a>
 				<ul class="left hide-on-med-and-down" id="nav-mobile">
 					<li class="active">
-						<a href="#">Home</a>
-					</li>
-					<li>
 						<a href="#features">Features</a>
 					</li>
-				</ul>
-				<ul id="dropdown1" class="dropdown-content">
 					<li>
-						<a href="#!">Login</a>
+						<a class="modal-trigger" data-target="modal1">Sign Up</a>
 					</li>
-					<li>
-						<a href="#!">Create an Account!</a>
-					</li>
-					<li class="divider"></li>
 				</ul>
+
 				<ul class="right hide-on-med-and-down">
-					<li>
-						<a class="dropdown-trigger" href="#!" data-target="dropdown1">Account
+					<li class="blue white-text">
+						<a class="dropdown-button" data-activates="dropdown1">Account
 							<i class="material-icons right">arrow_drop_down</i>
 						</a>
 					</li>
 				</ul>
+
 			</div>
 		</nav>
-		<h4 class="white-text introCopy">Welcome to Blank Canvas.</h4>
+		<div class="introCopy">
+			<h4 class="white-text">Welcome to Blank Canvas.</h4>
+			<h5 class="white-text">Where artists can collaborate with each other.</h5>
+		</div>
+		<div class="row center">
+			<a class="bottomArrow material-icons red-text center" href="#features">expand_more</a>
+		</div>
 	</div>
 	<div class="featureImage">
 		<div class="row">
@@ -86,29 +94,30 @@
 		<br>
 		<div class="row center">
 			<div class="col s12 m4">
-				<div class="card-panel blue">
-					<span class="white-text">Create your own personalized artist profile, complete with your artwork and links
-						to your external portfolio to show off to potential clients.
-					</span>
+				<div class="card blue white-text">
+					<div class="card-panel blue card-title">Artist Profile</div>
+					<div class="card-action">Create your own personalized artist profile, complete with your artwork and links to your external portfolio to show
+						off to potential clients.</div>
 				</div>
 			</div>
 			<div class="col s12 m4">
-				<div class="card-panel blue">
-					<span class="white-text">Customize your preferences and 
-					</span>
+				<div class="card blue white-text">
+					<div class="card-panel blue card-title">Events Near You</div>
+					<div class="card-action">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
+						markup to use effectively. I am similar to what is called a panel in other frameworks.</div>
 				</div>
 			</div>
 			<div class="col s12 m4">
-				<div class="card-panel blue">
-					<span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
-						markup to use effectively. I am similar to what is called a panel in other frameworks.
-					</span>
+				<div class="card blue white-text">
+					<div class="card-panel blue card-title">Sign Up Now.</div>
+					<div class="card-action">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
+						markup to use effectively. I am similar to what is called a panel in other frameworks.</div>
 				</div>
 			</div>
 		</div>
 		<br>
 		<div class="row center">
-			<a class="waves-effect waves-light btn blue modal-trigger center" data-target="modal1">Sign Up</a>
+			<a class="waves-effect waves-light btn red modal-trigger center" data-target="modal1">Sign Up Now</a>
 		</div>
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal blank">
