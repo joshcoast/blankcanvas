@@ -128,6 +128,7 @@ $(document).ready(function () {
 				console.log(downloadURL);
 				console.log("---");
 				$("#profilePicture").attr("src", downloadURL);
+				database.ref("/user").set({ profilePic: downloadURL });
 			}
 		);
 	});
