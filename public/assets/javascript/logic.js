@@ -29,9 +29,9 @@ $(document).ready(function () {
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
-	if (user) {
+		if (user) {
 			// User is signed in.
-		if (user != null) {
+			if (user != null) {
 
 				var name = user.displayName;
 				console.log(user.displayName);
@@ -94,15 +94,15 @@ $(document).ready(function () {
 				// 		}
 				// 	);
 				// });
-		}
-		else {
-		window.location.href = "../../index.html"
-			// No user is signed in.
-			console.log("User profile not made.");
-		}
+			}
+			else {
+				window.location.href = "../../index.html"
+				// No user is signed in.
+				console.log("User profile not made.");
+			}
 
 
-	}
+		}
 	});
 
 
@@ -144,7 +144,7 @@ $(document).ready(function () {
 		loadApi()
 	});
 
-	function loadApi() {	
+	function loadApi() {
 		var cx = '002690778075665955245:ytl48lknafo';
 		var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
 			"AIzaSyDhBFUxT1VXUOEMHmPtB7LiVuxQXwrH_9I&cx=" + cx + "&q=" + apiInterest;
