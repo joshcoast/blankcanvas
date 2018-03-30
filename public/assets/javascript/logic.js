@@ -26,17 +26,18 @@ $(document).ready(function () {
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
 		if (user) {
+			console.log("Butt");
 			// User is signed in.
 			if (user != null) {
+				console.log("Test");
 
 				var name = user.displayName;
-				console.log(currentUser.displayName);
+				console.log(user.displayName);
 				var email = user.email;
-				console.log(currentUser.email);
+				console.log(user.email);
 				var uid = "/" + user.uid;
-				console.log(currentUser.uid);
-				var photoUrl = user.photoUrl;
-				console.log(currentUser.photoUrl);
+				console.log(user.uid);
+				
 
 				database.ref(uid).set({
 					name: name
@@ -44,15 +45,26 @@ $(document).ready(function () {
 
 				name = user.displayName;
 				email = user.email;
-				photoUrl = user.photoUrl;
 				emailVerified = user.emailVerified;
 				uid = uid; // The user's ID, unique to the Firebase project. Do NOT use
 				// this value to authenticate with your backend server, if
 				// you have one. Use User.getToken() instead.
 
+				database.ref(uid).set({ name: name});
+				database.ref(uid).set({ email: email});
+				$("#idName").text(name);
+				$("#idUrl").text(email);
+			}
+		} else {
+			// window.location.href="../../index.html"
+			// No user is signed in.
+		}
+	});
 
 
 
+	
+	// -- Image Upload -- //
 
 
 
