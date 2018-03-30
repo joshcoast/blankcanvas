@@ -23,15 +23,15 @@ window.addEventListener('scroll', function () {
 $(document).ready(function () {
 
 	var user = firebase.auth().currentUser;
-	var name, email, photoUrl, uid, emailVerified;
+	var name, email, uid, emailVerified, profilePic;
+
+
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
 		if (user) {
-			console.log("Butt");
 			// User is signed in.
 			if (user != null) {
-				console.log("Test");
 
 				var name = user.displayName;
 				console.log(user.displayName);
@@ -39,7 +39,8 @@ $(document).ready(function () {
 				console.log(user.email);
 				var uid = "/" + user.uid;
 				console.log(user.uid);
-				
+
+
 
 				name = user.displayName;
 				email = user.email;
@@ -48,58 +49,63 @@ $(document).ready(function () {
 				// this value to authenticate with your backend server, if
 				// you have one. Use User.getToken() instead.
 
-				database.ref(uid).set({ name: name});
-				database.ref(uid).set({ email: email});
+				database.ref(uid).set({
+					name: name,
+					email: email,
+					uid: uid,
+					profilePic: profilePic
+				});
+
 				$("#idName").text(name);
 				$("#idUrl").text(email);
+
+				// // -- Image Upload -- //
+
+				// //Get elements
+				// var uploader = $("#uploader");
+				// var fileButton = $("#fileButton");
+
+				// //Listen for file selection
+				// fileButton.on("change", function (e) {
+				// 	// Get the file
+				// 	var file = e.target.files[0];
+				// 	console.log(e.target.files[0].name);
+
+				// 	// Create a storage ref
+				// 	var storageRef = firebase.storage().ref("profile_pic/" + file.name);
+
+				// 	// Upload file
+				// 	var task = storageRef.put(file);
+
+				// 	// Update progress bar 
+				// 	task.on('state_changed',
+
+				// 		function error(err) {
+
+				// 		},
+				// 		function complete() {
+				// 			profilePic = task.snapshot.profilePic;
+				// 			console.log("---");
+				// 			console.log(profilePic);
+				// 			console.log("---");
+				// 			$("#profilePicture").attr("src", profilePic);
+				// 			var userPhoto = user + "/" + profilePic;
+				// 			database.ref(userPhoto).set({ profilePic: profilePic });
+				// 		}
+				// 	);
+				// });
 			}
 		} else {
-			// window.location.href="../../index.html"
+			window.location.href = "../../index.html"
 			// No user is signed in.
+			console.log("User profile not made.");
 		}
 	});
 
 
 
-	
-	// -- Image Upload -- //
 
-	//Get elements
-	var uploader = $("#uploader");
-	var fileButton = $("#fileButton");
 
-	//Listen for file selection
-	fileButton.on("change", function (e) {
-		// Get the file
-		var file = e.target.files[0];
-		console.log(e.target.files[0].name);
-
-		// Create a storage ref
-		var storageRef = firebase.storage().ref("profile_pic/" + file.name);
-
-		// Upload file
-		var task = storageRef.put(file);
-
-		// Update progress bar 
-		task.on('state_changed',
-
-			function progress(snapshot) {
-				var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-				uploader.value = percentage;
-			},
-			function error(err) {
-
-			},
-			function complete() {
-				var downloadURL = task.snapshot.downloadURL;
-				console.log("---");
-				console.log(downloadURL);
-				console.log("---");
-				$("#profilePicture").attr("src", downloadURL);
-				database.ref("/user").set({ profilePic: downloadURL });
-			}
-		);
-	});
 
 
 

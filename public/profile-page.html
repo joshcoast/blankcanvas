@@ -59,7 +59,7 @@
 								<p id="idLocation">Denver, Colorado</p>
 								<h5 id="idUrl">www.website.com</h5>
 							</div>
-							<a class="btn-floating right btn-medium red EditElement">
+							<a class="btn-floating right btn-medium red EditElement modal-trigger" data-target="modal1">
 								<i class="large material-icons">mode_edit</i>
 							</a>
 							<!-- <progress value="0" max="100" id="uploader">0%</progress> -->
@@ -194,7 +194,63 @@
 				</div>
 			</div>
 		</div>
+		<!-- Modal Structure -->
+	<div id="modal1" class="modal blank">
+		<div class="modal-content">
+			<div class="row">
+				<form class="col s12">
+
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix">account_circle</i>
+							<input id="first_name" type="text" class="validate">
+							<label for="first_name">First Name</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="last_name" type="text" class="validate">
+							<label for="last_name">Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name" type="text" class="validate">
+							<label for="title">Title</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="website" type="text" class="validate">
+							<label for="website">Website</label>
+						</div>
+					</div>
+					<div class="file-field input-field">
+						<div class="btn">
+							<span>Upload File</span>
+							<input type="file" multiple>
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text" placeholder="Upload one or more files">
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+		</div>
 	</div>
+	<!-- End Modal for profile change -->
+	</div>
+
+	
+
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -291,59 +347,59 @@
 		});
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGZVPGsNTMJ_snjkzQhKzzMGOI_hJoXw8&amp;libraries=places&amp;callback=initMap"
- async defer>
-</script>
-<script>
-	$.ajax({
-		url: "https://geoip-db.com/jsonp",
-		jsonpCallback: "callback",
-		dataType: "jsonp",
-		success: function (location) {
-			var map;
-			var infowindow;
+	 async defer>
+	</script>
+	<script>
+		$.ajax({
+			url: "https://geoip-db.com/jsonp",
+			jsonpCallback: "callback",
+			dataType: "jsonp",
+			success: function (location) {
+				var map;
+				var infowindow;
 
 
-			var pyrmont = { lat: location.latitude, lng: location.longitude };
+				var pyrmont = { lat: location.latitude, lng: location.longitude };
 
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: pyrmont,
-				zoom: 18
-			});
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: pyrmont,
+					zoom: 18
+				});
 
-			infowindow = new google.maps.InfoWindow();
-			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch({
-				location: pyrmont,
-				radius: 25,
-				type: ['art_gallery']
-			}, callback);
+				infowindow = new google.maps.InfoWindow();
+				var service = new google.maps.places.PlacesService(map);
+				service.nearbySearch({
+					location: pyrmont,
+					radius: 25,
+					type: ['art_gallery']
+				}, callback);
 
 
 
-			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				for (var i = 0; i < results.length; i++) {
-					createMarker(results[i]);
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+					for (var i = 0; i < results.length; i++) {
+						createMarker(results[i]);
+					}
 				}
+
+
+
+				var placeLoc = place.geometry.location;
+				var marker = new google.maps.Marker({
+					map: map,
+					position: place.geometry.location
+				});
+
+				google.maps.event.addListener(marker, 'click', function () {
+					infowindow.setContent(place.name);
+					infowindow.open(map, this);
+				});
 			}
 
+		});
 
 
-			var placeLoc = place.geometry.location;
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location
-			});
-
-			google.maps.event.addListener(marker, 'click', function () {
-				infowindow.setContent(place.name);
-				infowindow.open(map, this);
-			});
-		}
-
-	});
-
-
-</script>
+	</script>
 </body>
 
 </html>
