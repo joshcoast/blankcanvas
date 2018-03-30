@@ -93,7 +93,7 @@
 											</div>
 										</li>
 										<li>
-											<img src="https://lorempixel.com/580/250/nature/3">
+											<img src="">
 											<!-- random image -->
 											<div class="caption center-align">
 												<h3>Right Aligned Caption</h3>
@@ -145,46 +145,6 @@
 						</div>
 						<div id="test5">
 							<ul class="collection">
-								<li class="collection-item avatar">
-									<img src="" alt="" class="circle">
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle">folder</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle green">insert_chart</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle red">play_arrow</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -257,149 +217,7 @@
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
 	<script src="assets/javascript/logic.js"></script>
 	<script src="https://apis.google.com/js/api.js"></script>
-	<script>
-		$(document).ready(function () {
 
-
-			var interestChips = [];
-			// This function will Grab the information from the user sign up? Not sure if we will need it.
-			function interestrenderChips() {
-
-			}
-			// slider and collapsible functions:
-			$('.slider').slider();
-			$('.collapsible').collapsible();
-			$(".button-collapse").sideNav();
-			// Chips:
-			var interest = ""
-			var chip = {
-				tag: 'chip content',
-				image: '', //optional
-				id: 1, //optional
-				Ckey: 'data-key'
-			};
-			// interest chips:
-			$('#ChipsInterest').on('chip.add', function (e, chip) {
-				e.preventDefault();
-
-				interest = chip.tag;
-				database.ref().push({ interest: interest });
-				// Google Custom Search:
-			});
-
-			database.ref().on("child_added", function (childSnapshot) {
-				interestChips.push(childSnapshot.val().interest);
-				var chipInit = interestChips.map(x => ({ tag: x }));
-				$('.chips').material_chip({
-					data: chipInit
-				});
-				$('.chip').attr('data-key', childSnapshot.key);
-				console.log(childSnapshot.key);
-
-				var cx = '002690778075665955245:ytl48lknafo';
-				var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
-					"AIzaSyDhBFUxT1VXUOEMHmPtB7LiVuxQXwrH_9I&cx=" + cx + "&q=" + (childSnapshot.val().interest);
-
-				$.ajax({
-					url: queryURL,
-					method: "GET"
-				}).then(function (response) {
-					console.log(response);
-					var results = response.items;
-
-					for (var i = 0; i < results.length; i++) {
-						$("#InterestDiv").append(`<li class="collection-item avatar">
-																				<img src="" alt="" class="circle">
-																				<span class="title">${results[i].title}</span>
-																				<p></p>
-																				<a href="#!" class="secondary-content">  
-
-																				<input type="checkbox" id="test" class="saveCheckbox" />
-																				<label for="test">Save</label>
-																				</a>
-																				</li>`
-						)
-					};
-
-				});
-			});
-
-			$('.chips').on('chip.delete', function (e, chip) {
-				var ThisKey = (e, chip.Ckey)
-				console.log(ThisKey)
-				var ChipToDelete = (e, chip.tag);
-				console.log(ChipToDelete)
-				var Chipid = $('.chip').data('key');
-				console.log(Chipid)
-				database.ref('/' + Chipid).remove();
-			});
-
-			$('.chips').on('chip.select', function (e, chip) {
-				// you have the selected chip here
-			});
-
-			$('.chips').material_chip();
-
-			$('.chips-placeholder').material_chip({
-				placeholder: 'Enter an interest',
-				secondaryPlaceholder: '+ interest',
-			});
-		});
-	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGZVPGsNTMJ_snjkzQhKzzMGOI_hJoXw8&amp;libraries=places&amp;callback=initMap"
-	 async defer>
-	</script>
-	<script>
-		$.ajax({
-			url: "https://geoip-db.com/jsonp",
-			jsonpCallback: "callback",
-			dataType: "jsonp",
-			success: function (location) {
-				var map;
-				var infowindow;
-
-
-				var pyrmont = { lat: location.latitude, lng: location.longitude };
-
-				map = new google.maps.Map(document.getElementById('map'), {
-					center: pyrmont,
-					zoom: 18
-				});
-
-				infowindow = new google.maps.InfoWindow();
-				var service = new google.maps.places.PlacesService(map);
-				service.nearbySearch({
-					location: pyrmont,
-					radius: 25,
-					type: ['art_gallery']
-				}, callback);
-
-
-
-				if (status === google.maps.places.PlacesServiceStatus.OK) {
-					for (var i = 0; i < results.length; i++) {
-						createMarker(results[i]);
-					}
-				}
-
-
-
-				var placeLoc = place.geometry.location;
-				var marker = new google.maps.Marker({
-					map: map,
-					position: place.geometry.location
-				});
-
-				google.maps.event.addListener(marker, 'click', function () {
-					infowindow.setContent(place.name);
-					infowindow.open(map, this);
-				});
-			}
-
-		});
-
-
-	</script>
 </body>
 
 </html>
