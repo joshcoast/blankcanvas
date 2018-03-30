@@ -28,10 +28,8 @@ $(document).ready(function () {
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
 		if (user) {
-			console.log("Butt");
 			// User is signed in.
 			if (user != null) {
-				console.log("Test");
 
 				var name = user.displayName;
 				console.log(user.displayName);
@@ -48,8 +46,11 @@ $(document).ready(function () {
 				// this value to authenticate with your backend server, if
 				// you have one. Use User.getToken() instead.
 
-				database.ref(uid).set({ name: name});
-				database.ref(uid).set({ email: email});
+				database.ref(uid).set({
+					name: name,
+					email: email,
+
+				});
 				$("#idName").text(name);
 				$("#idUrl").text(email);
 			}
