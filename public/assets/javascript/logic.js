@@ -49,7 +49,9 @@ $(document).ready(function () {
 				// you have one. Use User.getToken() instead.
 
 				database.ref(uid).set({ name: name});
+				database.ref(uid).set({ email: email});
 				$("#idName").text(name);
+				$("#idUrl").text(email);
 			}
 		} else {
 			// window.location.href="../../index.html"
