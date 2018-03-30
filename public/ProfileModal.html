@@ -2,101 +2,101 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- Style Links -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
-    />
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css"> </head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<!-- Style Links -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+	/>
+	<link type="text/css" rel="stylesheet" href="assets/css/style.css"> </head>
 
 </head>
 
 <body>
-    <br>
-    <div class="row center">
-        <a class="waves-effect waves-light btn red modal-trigger center" data-target="modal1">Sign Up Now</a>
-    </div>
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal blank">
-        <div class="modal-content">
-            <div class="row">
-                <form class="col s12">
+	<br>
+	<div class="row center">
+		<a class="waves-effect waves-light btn red modal-trigger center" data-target="modal1">Sign Up Now</a>
+	</div>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal blank">
+		<div class="modal-content">
+			<div class="row">
+				<form class="col s12">
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="name" type="text" class="validate">
-                            <label for="title">Title</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="website" type="text" class="validate">
-                            <label for="website">Website</label>
-                        </div>
-                    </div>
-                    <div class="file-field input-field">
-                            <div class="btn">
-                              <span>Upload File</span>
-                              <input type="file" multiple>
-                            </div>
-                            <div class="file-path-wrapper">
-                              <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                            </div>
-                          </div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix">account_circle</i>
+							<input id="first_name" type="text" class="validate">
+							<label for="first_name">First Name</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="last_name" type="text" class="validate">
+							<label for="last_name">Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name" type="text" class="validate">
+							<label for="title">Title</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="website" type="text" class="validate">
+							<label for="website">Website</label>
+						</div>
+					</div>
+					<div class="file-field input-field">
+						<div class="btn">
+							<span>Upload File</span>
+							<input type="file" multiple>
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text" placeholder="Upload one or more files">
+						</div>
+					</div>
 
-                </form>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+				</form>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-        });
+	<script>
+		$(document).ready(function () {
+			// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+			$('.modal').modal();
+		});
 
-        $('.modal').modal({
-            dismissible: true, // Modal can be dismissed by clicking outside of the modal
-            opacity: .5, // Opacity of modal background
-            inDuration: 300, // Transition in duration
-            outDuration: 200, // Transition out duration
-            startingTop: '4%', // Starting top style attribute
-            endingTop: '10%', // Ending top style attribute
-            ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                alert("Ready");
-                console.log(modal, trigger);
-            },
-            complete: function () { alert('Closed'); } // Callback for Modal close
-        }
-        );
+		$('.modal').modal({
+			dismissible: true, // Modal can be dismissed by clicking outside of the modal
+			opacity: .5, // Opacity of modal background
+			inDuration: 300, // Transition in duration
+			outDuration: 200, // Transition out duration
+			startingTop: '4%', // Starting top style attribute
+			endingTop: '10%', // Ending top style attribute
+			ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+				alert("Ready");
+				console.log(modal, trigger);
+			},
+			complete: function () { alert('Closed'); } // Callback for Modal close
+		}
+		);
 
 
-    </script>
+	</script>
 
 </body>
 

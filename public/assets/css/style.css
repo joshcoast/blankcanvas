@@ -1,16 +1,16 @@
 body, html {
-    height: 100%;
-    margin: 0;
+		height: 100%;
+		margin: 0;
 }
 
 #navbarscroll {
 	background: black;
-    color: white;
-    text-align: center;
-    padding: 4px;
-    position: fixed;
-    left: 0; right: 0;
-    top: 0;
+		color: white;
+		text-align: center;
+		padding: 4px;
+		position: fixed;
+		left: 0; right: 0;
+		top: 0;
 }
 
 .bottomArrow {
@@ -41,20 +41,20 @@ body.scrolled #navbarscroll {
 body.scrolled #navbarscroll:hover {
 	opacity: 1.0;
 	transition: opacity .5s;
-  }
+	}
 
 .homeImage {
-    background-position: center;
-    height: 100%;
-    background-image: url("../images/Home.jpg");
-    background-size: cover;
+		background-position: center;
+		height: 100%;
+		background-image: url("../images/Home.jpg");
+		background-size: cover;
 }
 
 .featureImage {
-    background-position: center;
-    height: 100%;
-    background-image: url("../images/Home2.jpg");
-    background-size: cover;
+		background-position: center;
+		height: 100%;
+		background-image: url("../images/Home2.jpg");
+		background-size: cover;
 }
 
 /* -- Profile Page --*/
@@ -80,7 +80,7 @@ body.scrolled #navbarscroll:hover {
 	max-width: 200px;
 	min-width: 100px;
 	height: auto;
-	margin-right: 20px
+	margin-right: 20px;
 }
 
 #map {

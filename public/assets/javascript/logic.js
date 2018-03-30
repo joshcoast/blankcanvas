@@ -12,6 +12,7 @@ var database = firebase.database();
 
 
 
+
 // Scroll effect for nav bar
 window.addEventListener('scroll', function () {
 	document.body.classList[
@@ -21,21 +22,31 @@ window.addEventListener('scroll', function () {
 
 $(document).ready(function () {
 
-	var name, email, photoUrl, uid, emailVerified;
 	var user = firebase.auth().currentUser;
+	var name, email, photoUrl, uid, emailVerified;
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
 		if (user) {
 			// User is signed in.
-			console.log("user: " + firebase.auth().currentUser.displayName);
-			console.log("email: " + firebase.auth().currentUser.email);
-			console.log("uid: " + firebase.auth().currentUser.uid);
-			console.log("photoUrl: " + firebase.auth().currentUser.photoUrl);
 			if (user != null) {
+				console.log("user: " + firebase.auth().currentUser.displayName);
+				console.log("email: " + firebase.auth().currentUser.email);
+				console.log("uid: " + firebase.auth().currentUser.uid);
+				console.log("photoUrl: " + firebase.auth().currentUser.photoUrl);
+
+				var name = firebase.auth().currentUser.displayName;
+				console.log(currentUser.displayName);
+				var email = firebase.auth().currentUser.email;
+				console.log(currentUser.email);
+				var uid = firebase.auth().currentUser.uid;
+				console.log(currentUser.uid);
+				var photoUrl = firebase.auth().currentUser.photoUrl;
+				console.log(currentUser.photoUrl);
+
 				name = user.displayName;
 				email = user.email;
-				photoUrl = user.photoURL;
+				photoUrl = user.photoUrl;
 				emailVerified = user.emailVerified;
 				uid = uid; // The user's ID, unique to the Firebase project. Do NOT use
 				// this value to authenticate with your backend server, if
