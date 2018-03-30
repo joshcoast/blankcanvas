@@ -29,9 +29,9 @@ $(document).ready(function () {
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
-		if (user) {
+	if (user) {
 			// User is signed in.
-			if (user != null) {
+		if (user != null) {
 
 				var name = user.displayName;
 				console.log(user.displayName);
@@ -94,16 +94,97 @@ $(document).ready(function () {
 				// 		}
 				// 	);
 				// });
-			}
-		} else {
-			window.location.href = "../../index.html"
+		}
+		else {
+		window.location.href = "../../index.html"
 			// No user is signed in.
 			console.log("User profile not made.");
 		}
+
+
+	}
 	});
 
 
 
+	var interestChips = [];
+	// This function will Grab the information from the user sign up? Not sure if we will need it.
+	function interestrenderChips() {
+	}
+	// slider and collapsible functions:
+	$('.slider').slider();
+	$('.collapsible').collapsible();
+	$(".button-collapse").sideNav();
+	// Chips:
+	var apiInterest = ""
+	var interest = ""
+	var chip = {
+		tag: 'chip content',
+		image: '', //optional
+		id: 1, //optional
+		Ckey: 'data-key'
+	};
+	// interest chips:
+	$('#ChipsInterest').on('chip.add', function (e, chip) {
+		e.preventDefault();
+
+		interest = chip.tag;
+		firebase.auth().currentUser.push({ interest: interest });
+		// Google Custom Search:
+	});
+	database.ref().on("child_added", function (childSnapshot) {
+		interestChips.push({ interest: childSnapshot.val().interest, key: childSnapshot.key });
+		var chipInit = interestChips.map(chip => ({ tag: chip.interest, key: chip.key }));
+		$('.chips').material_chip({
+			data: chipInit
+		});
+		$('.chip').attr('data-key', childSnapshot.key);
+		console.log(childSnapshot.key)
+		apiInterest = childSnapshot.val().interest;
+		loadApi()
+	});
+
+	function loadApi() {	
+		var cx = '002690778075665955245:ytl48lknafo';
+		var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
+			"AIzaSyDhBFUxT1VXUOEMHmPtB7LiVuxQXwrH_9I&cx=" + cx + "&q=" + apiInterest;
+		$.ajax({
+			url: queryURL,
+			method: "GET"
+		}).then(function (response) {
+			console.log(response);
+			var results = response.items;
+			for (var i = 0; i < 5; i++) {
+				$("#InterestDiv").prepend(`<div class="row collection-item">
+																			<div class="col s10 m10 l10">
+																					<li >
+																					<span class="title">${apiInterest}</span>
+																					</li>
+																			</div>
+																			<div class="col s2 m2 l2">
+																					<a href="#!" class="secondary-content">  
+																					<input type="checkbox" id="saveThis" class="saveCheckbox" />
+																					<label for="saveThis">Save</label>
+																			</div>
+																	</div>`
+
+				)
+			};
+		});
+	}
+	$('.chips').on('chip.delete', function (e, chip) {
+		database.ref('/' + chip.key).remove();
+		$("#InterestDiv").empty();
+		loadApi()
+	});
+	$('.chips').on('chip.select', function (e, chip) {
+		// you have the selected chip here
+	});
+	$('.chips').material_chip();
+	$('.chips-placeholder').material_chip({
+		placeholder: 'Enter an interest',
+		secondaryPlaceholder: '+ interest',
+	});
 
 
 
