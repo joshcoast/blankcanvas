@@ -57,8 +57,63 @@
 								<h5 id="idUrl">www.website.com</h5>
 							</div>
 							<a class="btn-floating right btn-medium red EditElement modal-trigger" data-target="modal1">
-								<i class="large material-icons">mode_edit</i>
-							</a>
+									<i class="large material-icons">mode_edit</i>
+								</a>
+								<!-- Modal Structure -->
+								<div id="modal1" class="modal blank">
+									<div class="modal-content">
+										<div class="row">
+											<form class="col s12">
+							
+												<div class="row">
+													<div class="input-field col s6">
+														<i class="material-icons prefix">accessibility</i>
+														<input id="first_name" type="text" class="validate">
+														<label for="first_name">First Name</label>
+													</div>
+													<div class="input-field col s6">
+														<input id="last_name" type="text" class="validate">
+														<label for="last_name">Last Name</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<i class="material-icons prefix">assignment_ind</i>
+														<input id="name" type="text" class="validate">
+														<label for="title">Title</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<i class="material-icons prefix">email</i>
+														<input id="email" type="email" class="validate">
+														<label for="email">Email</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<i class="material-icons prefix">code</i>
+														<input id="website" type="text" class="validate">
+														<label for="website">Website</label>
+													</div>
+												</div>
+												<div class="file-field input-field">
+													<div class="btn">
+														<span>Upload File</span>
+														<input type="file" multiple>
+													</div>
+													<div class="file-path-wrapper">
+														<input class="file-path validate" type="text" placeholder="Upload one or more files">
+													</div>
+												</div>
+							
+											</form>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<a href="#!" id="save" class="modal-action modal-close waves-effect waves-green btn-flat center">Save</a>
+									</div>
+								</div>
 							<!-- <progress value="0" max="100" id="uploader">0%</progress> -->
 							<input type="file" value="upload" id="fileButton" />
 						</div>
