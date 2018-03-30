@@ -53,7 +53,7 @@ $(document).ready(function () {
 					name: name,
 					email: email,
 					uid: uid,
-					profilePic: profilePic
+					// profilePic: profilePic
 				});
 
 				$("#idName").text(name);
