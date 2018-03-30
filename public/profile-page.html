@@ -21,233 +21,182 @@
 
 <body>
 
-	<nav class="nav-extended">
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul class="left hide-on-med-and-down" id="nav-mobile">
-				<li class="active">
-					<a href="#">Profile</a>
-				</li>
-				<li>
-					<a href="#">Map</a>
-				</li>
-				<li>
-					<a href="#">Settings</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center logoText ">Blank Canvas</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="left hide-on-med-and-down" id="nav-mobile">
+                <li class="active">
+                    <a href="#">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Map</a>
+                </li>
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-	<div class="row">
+    <div class="row">
 
-		<div class="col s12 m12 l10 offset-l1">
+        <div class="col s12 m12 l10 offset-l1">
 
-			<div class="row">
+            <div class="row">
 
-				<div class="col s12 m8 l9">
-					<!-- Note that "m8 l9" was added -->
+                <div class="col s12 m8 l9">
+                    <!-- Note that "m8 l9" was added -->
 
-					<div class="card-panel grey lighten-5 z-depth-1">
-						<div class="row profileDiv">
-							<div class="col m4 s12  ">
-								<img src="assets/images/placeholder-profile.jpg" alt="" class="ProfileImg circle ">
-							</div>
-							<div class="col m8 s12 ">
-								<h4>Name Last Name</h4>
-								<h5>Painter and Illustrator</h5>
-								<p>Denver, Colorado</p>
-								<h5>www.website.com</h5>
-							</div>
-							<a class="btn-floating right btn-medium red EditElement">
-								<i class="large material-icons modal-trigger" data-target="modal1">mode_edit</i>
-							</a>
-						</div>
-					</div>
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row profileDiv">
+                            <div class="col m4 s12  ">
+                                <img id="profilePicture" src="assets/images/placeholder-profile.jpg" alt="" class="ProfileImg circle ">
+                            </div>
+                            <div class="col m8 s12 ">
+                                <h4>Name Last Name</h4>
+                                <h5>Painter and Illustrator</h5>
+                                <p>Denver, Colorado</p>
+                                <h5>www.website.com</h5>
+                            </div>
+                            <a class="btn-floating right btn-medium red EditElement">
+                                <i class="large material-icons">mode_edit</i>
+														</a>
+														<!-- <progress value="0" max="100" id="uploader">0%</progress> -->
+														<input type="file" value="upload" id="fileButton" />
+                        </div>
+                    </div>
 
-					<ul class="collapsible" data-collapsible="accordion">
-						<li>
-							<div class="collapsible-header profileDiv">
-								<i class="material-icons">filter_drama</i>
-								Work Samples
-							</div>
-							<div class="collapsible-body">
-								<div class="slider">
-									<ul class="slides">
-										<li>
-											<img src="https://lorempixel.com/580/250/nature/1">
-											<!-- random image -->
-											<div class="caption center-align">
-												<h3>This is our big Tagline!</h3>
-												<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-											</div>
-										</li>
-										<li>
-											<img src="https://lorempixel.com/580/250/nature/2">
-											<!-- random image -->
-											<div class="caption center-align">
-												<h3>Left Aligned Caption</h3>
-												<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-											</div>
-										</li>
-										<li>
-											<img src="https://lorempixel.com/580/250/nature/3">
-											<!-- random image -->
-											<div class="caption center-align">
-												<h3>Right Aligned Caption</h3>
-												<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-											</div>
-										</li>
-										<li>
-											<img src="https://lorempixel.com/580/250/nature/4">
-											<!-- random image -->
-											<div class="caption center-align">
-												<h3>This is our big Tagline!</h3>
-												<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header profileDiv">
+                                <i class="material-icons">filter_drama</i>
+                                Work Samples
+                            </div>
+                            <div class="collapsible-body">
+                                <div class="slider">
+                                    <ul class="slides">
+                                        <li>
+                                            <img src="https://lorempixel.com/580/250/nature/1">
+                                            <!-- random image -->
+                                            <div class="caption center-align">
+                                                <h3>This is our big Tagline!</h3>
+                                                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="https://lorempixel.com/580/250/nature/2">
+                                            <!-- random image -->
+                                            <div class="caption center-align">
+                                                <h3>Left Aligned Caption</h3>
+                                                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="https://lorempixel.com/580/250/nature/3">
+                                            <!-- random image -->
+                                            <div class="caption center-align">
+                                                <h3>Right Aligned Caption</h3>
+                                                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="https://lorempixel.com/580/250/nature/4">
+                                            <!-- random image -->
+                                            <div class="caption center-align">
+                                                <h3>This is our big Tagline!</h3>
+                                                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-				<div class="col s12 m4 l3">
-					<!-- Note that "m4 l3" was added -->
+                <div class="col s12 m4 l3">
+                    <!-- Note that "m4 l3" was added -->
 
-					<p>Find local resources:</p>
-					<div id="ChipsInterest" class="chips chips-placeholder"></div>
+                    <p>Find local resources:</p>
+                    <div id="ChipsInterest" class="chips chips-placeholder"></div>
 
-				</div>
-				<div id="map"></div>
-			</div>
+                </div>
+                <div id="map"></div>
+            </div>
 
-			<div class="row">
-				<div class="col s12 m8 l9">
-					<div class="card-tabs">
-						<ul class="tabs tabs-fixed-width">
-							<li class="tab">
-								<a class="active" href="#test4">Upcoming</a>
-							</li>
-							<li class="tab">
-								<a href="#test5">Saved</a>
-							</li>
-						</ul>
-					</div>
-					<div class="card-content lighten-4">
-						<div id="test4">
-							<ul class="collection" id="InterestDiv">
+            <div class="row">
+                <div class="col s12 m8 l9">
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab">
+                                <a class="active" href="#test4">Upcoming</a>
+                            </li>
+                            <li class="tab">
+                                <a href="#test5">Saved</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-content lighten-4">
+                        <div id="test4">
+                            <ul class="collection" id="InterestDiv">
 
-							</ul>
-						</div>
-						<div id="test5">
-							<ul class="collection">
-								<li class="collection-item avatar">
-									<img src="" alt="" class="circle">
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle">folder</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle green">insert_chart</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-								<li class="collection-item avatar">
-									<i class="material-icons circle red">play_arrow</i>
-									<span class="title">Title</span>
-									<p>First Line
-										<br> Second Line
-									</p>
-									<a href="#!" class="secondary-content">
-										<i class="material-icons">grade</i>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m4 l3">
+                            </ul>
+                        </div>
+                        <div id="test5">
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                    <img src="" alt="" class="circle">
+                                    <span class="title">Title</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">grade</i>
+                                    </a>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle">folder</i>
+                                    <span class="title">Title</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">grade</i>
+                                    </a>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle green">insert_chart</i>
+                                    <span class="title">Title</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">grade</i>
+                                    </a>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle red">play_arrow</i>
+                                    <span class="title">Title</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">grade</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4 l3">
 
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- MODAL -->
-	<div id="modal1" class="modal blank">
-		<div class="modal-content">
-			<div class="row">
-				<form class="col s12">
-
-					<div class="row">
-						<div class="input-field col s6">
-							<i class="material-icons prefix">account_circle</i>
-							<input id="first_name" type="text" class="validate">
-							<label for="first_name">First Name</label>
-						</div>
-						<div class="input-field col s6">
-							<input id="last_name" type="text" class="validate">
-							<label for="last_name">Last Name</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="name" type="text" class="validate">
-							<label for="title">Title</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="email" type="email" class="validate">
-							<label for="email">Email</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="website" type="text" class="validate">
-							<label for="website">Website</label>
-						</div>
-					</div>
-					<div class="file-field input-field">
-						<div class="btn">
-							<span>Upload File</span>
-							<input type="file" multiple>
-						</div>
-						<div class="file-path-wrapper">
-							<input class="file-path validate" type="text" placeholder="Upload one or more files">
-						</div>
-					</div>
-
-				</form>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
