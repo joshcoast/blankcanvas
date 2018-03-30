@@ -40,7 +40,6 @@ $(document).ready(function () {
 				var uid = "/" + user.uid;
 				console.log(user.uid);
 
-				console.log(profilePic);
 
 
 				name = user.displayName;
@@ -60,45 +59,46 @@ $(document).ready(function () {
 				$("#idName").text(name);
 				$("#idUrl").text(email);
 
-				// -- Image Upload -- //
+				// // -- Image Upload -- //
 
-				//Get elements
-				var uploader = $("#uploader");
-				var fileButton = $("#fileButton");
+				// //Get elements
+				// var uploader = $("#uploader");
+				// var fileButton = $("#fileButton");
 
-				//Listen for file selection
-				fileButton.on("change", function (e) {
-					// Get the file
-					var file = e.target.files[0];
-					console.log(e.target.files[0].name);
+				// //Listen for file selection
+				// fileButton.on("change", function (e) {
+				// 	// Get the file
+				// 	var file = e.target.files[0];
+				// 	console.log(e.target.files[0].name);
 
-					// Create a storage ref
-					var storageRef = firebase.storage().ref("profile_pic/" + file.name);
+				// 	// Create a storage ref
+				// 	var storageRef = firebase.storage().ref("profile_pic/" + file.name);
 
-					// Upload file
-					var task = storageRef.put(file);
+				// 	// Upload file
+				// 	var task = storageRef.put(file);
 
-					// Update progress bar 
-					task.on('state_changed',
+				// 	// Update progress bar 
+				// 	task.on('state_changed',
 
-						function error(err) {
+				// 		function error(err) {
 
-						},
-						function complete() {
-							profilePic = task.snapshot.profilePic;
-							console.log("---");
-							console.log(profilePic);
-							console.log("---");
-							$("#profilePicture").attr("src", profilePic);
-							var userPhoto = user + "/" + profilePic;
-							database.ref(userPhoto).set({ profilePic: profilePic });
-						}
-					);
-				});
+				// 		},
+				// 		function complete() {
+				// 			profilePic = task.snapshot.profilePic;
+				// 			console.log("---");
+				// 			console.log(profilePic);
+				// 			console.log("---");
+				// 			$("#profilePicture").attr("src", profilePic);
+				// 			var userPhoto = user + "/" + profilePic;
+				// 			database.ref(userPhoto).set({ profilePic: profilePic });
+				// 		}
+				// 	);
+				// });
 			}
 		} else {
-			// window.location.href="../../index.html"
+			window.location.href = "../../index.html"
 			// No user is signed in.
+			console.log("User profile not made.");
 		}
 	});
 
