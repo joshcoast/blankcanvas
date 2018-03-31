@@ -78,9 +78,7 @@ $(document).ready(function () {
 
 						reader.onload = function (e) {
 							$('#profilePicture')
-								.attr('src', e.target.result)
-								.width(150)
-								.height(200);
+								.attr('src', e.target.result);
 							uidRef.update({
 								profilePicture: e.target.result
 							});
@@ -155,12 +153,13 @@ $(document).ready(function () {
 					}).then(function (response) {
 						console.log(response);
 						var results = response.items;
-						for (var i = 0; i < 1; i++) {
+						for (var i = 0; i < 3; i++) {
 							$("#InterestDiv").prepend(`<div class="row collection-item">
 																				<div class="col s10 m10 l10">
 																						<li >
-																						<span class="title">${apiInterest}</span>
-																						<span >${results[i].title}</span>
+																						<h5 class="title">${results[i].title}</h5>
+																						<p>${results[i].snippet}</p>
+																						<span ><a href="${results[i].link}">link text${results[i].displayLink} </a></span>
 																						</li>
 																				</div>
 																				<div class="col s2 m2 l2">
