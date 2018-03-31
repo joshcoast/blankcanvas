@@ -21,15 +21,15 @@ window.addEventListener('scroll', function () {
 $(document).ready(function () {
 
 	var user = firebase.auth().currentUser;
-	var name, email, photoUrl, uid, emailVerified;
+	var name, email, uid, emailVerified, profilePic;
+
+
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
 		if (user) {
-			console.log("Butt");
 			// User is signed in.
 			if (user != null) {
-				console.log("Test");
 
 				var name = user.displayName;
 				console.log(user.displayName);
@@ -37,7 +37,6 @@ $(document).ready(function () {
 				console.log(user.email);
 				var uid = "/" + user.uid;
 				console.log(user.uid);
-				
 
 				database.ref(uid).set({
 					name: name
@@ -50,31 +49,164 @@ $(document).ready(function () {
 				// this value to authenticate with your backend server, if
 				// you have one. Use User.getToken() instead.
 
-				database.ref(uid).set({ name: name});
-				database.ref(uid).set({ email: email});
+				database.ref(uid).set({
+					name: name,
+					email: email,
+					uid: uid,
+					// profilePic: profilePic
+				});
+
 				$("#idName").text(name);
 				$("#idUrl").text(email);
+
+				// // -- Image Upload -- //
+
+				// //Get elements
+				// var uploader = $("#uploader");
+				// var fileButton = $("#fileButton");
+
+				// //Listen for file selection
+				// fileButton.on("change", function (e) {
+				// 	// Get the file
+				// 	var file = e.target.files[0];
+				// 	console.log(e.target.files[0].name);
+
+				// 	// Create a storage ref
+				// 	var storageRef = firebase.storage().ref("profile_pic/" + file.name);
+
+				// 	// Upload file
+				// 	var task = storageRef.put(file);
+
+				// 	// Update progress bar 
+				// 	task.on('state_changed',
+
+				// 		function error(err) {
+
+				// 		},
+				// 		function complete() {
+				// 			profilePic = task.snapshot.profilePic;
+				// 			console.log("---");
+				// 			console.log(profilePic);
+				// 			console.log("---");
+				// 			$("#profilePicture").attr("src", profilePic);
+				// 			var userPhoto = user + "/" + profilePic;
+				// 			database.ref(userPhoto).set({ profilePic: profilePic });
+				// 		}
+				// 	);
+				// });
 			}
-		} else {
-			// window.location.href="../../index.html"
-			// No user is signed in.
+			else {
+				window.location.href = "../../index.html"
+				// No user is signed in.
+				console.log("User profile not made.");
+			}
+
+
 		}
 	});
 
 
 
-	
-	// -- Image Upload -- //
+	var interestChips = [];
+	// This function will Grab the information from the user sign up? Not sure if we will need it.
+	function interestrenderChips() {
+	}
+	// slider and collapsible functions:
+	$('.slider').slider();
+	$('.collapsible').collapsible();
+	$(".button-collapse").sideNav();
+	// Chips:
+	var apiInterest = ""
+	var interest = ""
+	var chip = {
+		tag: 'chip content',
+		image: '', //optional
+		id: 1, //optional
+		Ckey: 'data-key'
+	};
+	// interest chips:
+	$('#ChipsInterest').on('chip.add', function (e, chip) {
+		e.preventDefault();
+
+		interest = chip.tag;
+		firebase.auth().currentUser.push({ interest: interest });
+		// Google Custom Search:
+	});
+	database.ref().on("child_added", function (childSnapshot) {
+		interestChips.push({ interest: childSnapshot.val().interest, key: childSnapshot.key });
+		var chipInit = interestChips.map(chip => ({ tag: chip.interest, key: chip.key }));
+		$('.chips').material_chip({
+			data: chipInit
+		});
+		$('.chip').attr('data-key', childSnapshot.key);
+		apiInterest = childSnapshot.val().interest;
+		loadApi()
+	});
+
+	function loadApi() {
+		var cx = '002690778075665955245:ytl48lknafo';
+		var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
+			"AIzaSyDhBFUxT1VXUOEMHmPtB7LiVuxQXwrH_9I&cx=" + cx + "&q=" + apiInterest;
+		$.ajax({
+			url: queryURL,
+			method: "GET"
+		}).then(function (response) {
+			console.log(response);
+			var results = response.items;
+			for (var i = 0; i < 5; i++) {
+				$("#InterestDiv").prepend(`<div class="row collection-item">
+																			<div class="col s10 m10 l10">
+																					<li >
+																					<span class="title">${apiInterest}</span>
+																					</li>
+																			</div>
+																			<div class="col s2 m2 l2">
+																					<a href="#!" class="secondary-content">  
+																					<input type="checkbox" id="saveThis" class="saveCheckbox" />
+																					<label for="saveThis">Save</label>
+																			</div>
+																	</div>`
+
+				)
+			};
+		});
+	}
+	$('.chips').on('chip.delete', function (e, chip) {
+		database.ref('/' + chip.key).remove();
+		$("#InterestDiv").empty();
+		loadApi()
+	});
+	$('.chips').on('chip.select', function (e, chip) {
+		// you have the selected chip here
+	});
+	$('.chips').material_chip();
+	$('.chips-placeholder').material_chip({
+		placeholder: 'Enter an interest',
+		secondaryPlaceholder: '+ interest',
+	});
 
 
+	// Modal Button for Profile Edit
+	// $('.modal').modal();
 
 
-
-	      // -- Image Upload -- //
+	$('.modal').modal({
+		dismissible: true, // Modal can be dismissed by clicking outside of the modal
+		opacity: .5, // Opacity of modal background
+		inDuration: 300, // Transition in duration
+		outDuration: 200, // Transition out duration
+		startingTop: '4%', // Starting top style attribute
+		endingTop: '10%', // Ending top style attribute
+		ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+			console.log(modal, trigger);
+		},
+	}
+	);
+				// -- Image Upload -- //
 				//Get elements
 				var uploader = $("#uploader");
 				var fileButton = $("#fileButton");
-
+				
 				//Listen for file selection
 				fileButton.on("change", function (e) {
 					// Get the file
@@ -116,11 +248,6 @@ $(document).ready(function () {
 			// No user is signed in.
 		}
 	});
-
-
-
-
-
 
 
 

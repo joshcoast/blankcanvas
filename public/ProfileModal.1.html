@@ -15,10 +15,9 @@
 </head>
 
 <body>
-	<br>
-	<div class="row center">
-		<a class="waves-effect waves-light btn red modal-trigger center" data-target="modal1">Sign Up Now</a>
-	</div>
+	<a class="btn-floating right btn-medium red EditElement modal-trigger" data-target="modal1">
+		<i class="large material-icons">mode_edit</i>
+	</a>
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal blank">
 		<div class="modal-content">
@@ -27,7 +26,7 @@
 
 					<div class="row">
 						<div class="input-field col s6">
-							<i class="material-icons prefix">account_circle</i>
+							<i class="material-icons prefix">accessibility</i>
 							<input id="first_name" type="text" class="validate">
 							<label for="first_name">First Name</label>
 						</div>
@@ -38,18 +37,21 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
+							<i class="material-icons prefix">assignment_ind</i>
 							<input id="name" type="text" class="validate">
 							<label for="title">Title</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
+							<i class="material-icons prefix">email</i>
 							<input id="email" type="email" class="validate">
 							<label for="email">Email</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
+							<i class="material-icons prefix">code</i>
 							<input id="website" type="text" class="validate">
 							<label for="website">Website</label>
 						</div>
@@ -68,7 +70,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat center">Agree</a>
+			<a href="#!" id="save" class="modal-action modal-close waves-effect waves-green btn-flat center">Save</a>
 		</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
