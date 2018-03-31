@@ -146,7 +146,7 @@ $(document).ready(function () {
 				function loadApi() {
 					var cx = '002690778075665955245:ytl48lknafo';
 					var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
-						"AIzaSyAC8YxAO1mJus36IfLemJ9HNoysa8WpgkI&cx=" + cx + "&q=" + apiInterest;
+						"AIzaSyBcq5MgTwwPwkFtkactviSR_lYtfK6swVw&cx=" + cx + "&q=" + apiInterest;
 					$.ajax({
 						url: queryURL,
 						method: "GET"

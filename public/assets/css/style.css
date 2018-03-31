@@ -95,4 +95,8 @@ body.scrolled #navbarscroll:hover {
 	height: 400px;
 }
 
+.modal-footer {
+	margin-top: -60px;
+}
+
 /*-- upload image (temp) --*/
