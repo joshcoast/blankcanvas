@@ -24,19 +24,24 @@ $(document).ready(function () {
 	var user = firebase.auth().currentUser;
 	var name, email, uid, emailVerified, profilePic;
 
-	$("#start").on("click", function () {
+	$("#save").on("click", function () {
 		var firstName = $("#first_name").val();
 		var lastName = $("#last_name").val();
 		var title = $("#title").val();
 		var website = $("#website").val();
 		var file = $("#file").val();
+		var location = $("#location").val();
 
-		$("#idName").append(firstName);
+
+		$("#idName").html(firstName);
 		// $("#last_name").text(lastName);
-		$("#idTitle").text(title);
-		$("idUrl").text(website);
+		$("#idTitle").html(title);
+		$("#idUrl").html(website);
+		$("#idLocation").html(location);
 		// $("#file").text(file);
 	})
+
+	
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
@@ -58,7 +63,7 @@ $(document).ready(function () {
 				// slider and collapsible functions:
 				$('.slider').slider();
 				$('.collapsible').collapsible();
-				$(".button-collapse").sideNav();
+				$('.button-collapse').sideNav();
 				// Chips:
 				var apiInterest = ""
 				var interest = ""
@@ -113,7 +118,6 @@ $(document).ready(function () {
 					email: email,
 					uid: uid,
 					interest: interest,
-					//	profilePic: profilePic
 				});
 
 				$("#idName").text(name);
@@ -165,7 +169,7 @@ $(document).ready(function () {
 		firebase.auth().signOut().then(function () {
 			console.log("signed out");
 		}).catch(function (error) {
-			window.location.href="../../404.html"
+			window.location.assign("https://blankcanvas-43876.firebaseapp.com/");
 			console.log("Whoops. An error occured");
 		});
 	})

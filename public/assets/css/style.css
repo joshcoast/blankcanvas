@@ -13,6 +13,13 @@ body, html {
 		top: 0;
 }
 
+.portImage {
+	background-position: center;
+	height: 100%;
+	background-image: url("../images/portfolio.jpg");
+	background-size: cover;
+}
+
 .bottomArrow {
 	position: fixed;
 	bottom: 5px;
