@@ -9,9 +9,6 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-
-
-
 // Scroll effect for nav bar
 window.addEventListener('scroll', function () {
 	document.body.classList[
@@ -22,7 +19,7 @@ window.addEventListener('scroll', function () {
 $(document).ready(function () {
 
 	var user = firebase.auth().currentUser;
-	var name, email, uid, emailVerified, profilePic;
+	var name, email, uid, emailVerified;
 
 	$("#save").on("click", function () {
 		var firstName = $("#first_name").val();
@@ -41,29 +38,73 @@ $(document).ready(function () {
 		// $("#file").text(file);
 	})
 
-	
-
+	// Authenticate User
 	firebase.auth().onAuthStateChanged(function (user) {
-		// database.ref().push({user});
 		if (user) {
 			// User is signed in.
 			if (user != null) {
-
-				var name = user.displayName;
+				name = user.displayName;
 				console.log(user.displayName);
-				var email = user.email;
+				email = user.email;
 				console.log(user.email);
-				var uid = "/" + user.uid;
+				uid = "/" + user.uid;
 				console.log(user.uid);
+				var ud = (user.uid);
 
-				var interestChips = [];
-				// This function will Grab the information from the user sign up? Not sure if we will need it.
-				function interestrenderChips() {
-				}
-				// slider and collapsible functions:
+				// Write User info to database
+				database.ref(uid).update({
+					name: name,
+					email: email,
+					uid: uid
+				});
+
+				// Write User Info to DOM
+				$("#idName").text(name);
+				$("#idUrl").text(email);
+
+				// Slider and collapsible functions (portfolio slideshow):
 				$('.slider').slider();
 				$('.collapsible').collapsible();
-				$('.button-collapse').sideNav();
+				$(".button-collapse").sideNav();
+
+				// -- Image profile upload feature -- //
+				var uidRef = database.ref(uid);
+				displayProfilePic();
+
+				$("#theInput").change(function (input) {
+					console.log(input.target.files[0]);
+					if (input.target.files && input.target.files[0]) {
+						var reader = new FileReader();
+
+						reader.onload = function (e) {
+							$('#profilePicture')
+								.attr('src', e.target.result)
+								.width(150)
+								.height(200);
+							uidRef.update({
+								profilePicture: e.target.result
+							});
+
+						};
+						reader.readAsDataURL(input.target.files[0]);
+					}
+				});
+
+				function displayProfilePic() {
+					var profilePicRef = uid + "/profilePicture";
+					console.log("profilePicRef: " + profilePicRef);
+					firebase.database().ref(profilePicRef).on("value", function (snap) {
+						var childData = snap.val();
+						console.log(childData);
+						$('#profilePicture').attr("src", childData);
+					});
+				}
+
+				// -- Search Feature -- //
+				var interestChips = [];
+				// This function will Grab the information from the user sign up? Not sure if we will need it.
+				function interestrenderChips() {}
+
 				// Chips:
 				var apiInterest = ""
 				var interest = ""
@@ -73,150 +114,111 @@ $(document).ready(function () {
 					id: 1, //optional
 					Ckey: 'data-key'
 				};
-				// interest chips:
+
+				// Interest Chips:
 				$('#ChipsInterest').on('chip.add', function (e, chip) {
 					e.preventDefault();
-
 					interest = chip.tag;
-
+					database.ref().child(ud).child('interests').push({
+						interest: interest
+					});
 				});
-				database.ref().on("child_added", function (childSnapshot) {
-					interestChips.push({ interest: childSnapshot.val().interest, key: childSnapshot.key });
-					var chipInit = interestChips.map(chip => ({ tag: chip.interest, key: chip.key }));
+
+				database.ref().child(ud).child('interests').on("child_added", function (snapshot) {
+					// interestChips.push({ interest: childSnapshot.val().interest, key: database.ref().child(ud).key });
+					interestChips.push({
+						interest: snapshot.val().interest,
+						key: snapshot.key
+					});
+
+					var chipInit = interestChips.map(chip => ({
+						tag: chip.interest,
+						key: chip.key
+					}));
+
 					$('.chips').material_chip({
 						data: chipInit
 					});
-					$('.chip').attr('data-key', childSnapshot.key);
 
-					apiInterest = childSnapshot.val().interest;
-					loadApi()
+					//$('.chip').attr('data-key', childSnapshot.key);
+					apiInterest = snapshot.val().interest;
+					loadApi();
 				});
 
+				function loadApi() {
+					var cx = '002690778075665955245:ytl48lknafo';
+					var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
+						"AIzaSyAC8YxAO1mJus36IfLemJ9HNoysa8WpgkI&cx=" + cx + "&q=" + apiInterest;
+					$.ajax({
+						url: queryURL,
+						method: "GET"
+					}).then(function (response) {
+						console.log(response);
+						var results = response.items;
+						for (var i = 0; i < 1; i++) {
+							$("#InterestDiv").prepend(`<div class="row collection-item">
+																				<div class="col s10 m10 l10">
+																						<li >
+																						<span class="title">${apiInterest}</span>
+																						<span >${results[i].title}</span>
+																						</li>
+																				</div>
+																				<div class="col s2 m2 l2">
+																						<a href="#!" class="secondary-content">  
+																						<input type="checkbox" id="saveThis" class="saveCheckbox" />
+																						<label for="saveThis">Save</label>
+																				</div>
+																		</div>`
+
+							)
+						};
+					});
+				}
+
 				$('.chips').on('chip.delete', function (e, chip) {
-					database.ref('/' + chip.key).remove();
+					var chipKeyDelq = '/' + interest.key;
+					var chipKeyDel = interest;
+					var udkeydel = ud.chipKeyDel
+					var keyyy = ('/' + chip.key)
+					console.log(keyyy)
+					console.log(ud)
+					console.log(chipKeyDelq)
+					console.log(chipKeyDel)
+					console.log(udkeydel)
+					database.ref().child(ud).child('interests').child(keyyy).remove()
+					//database.ref().child(ud).chipKeyDelq.remove()
+					//firebase.database().ref().child('accounts').child(uid).set({
+					//database.ref('/' + chip.key).remove();
 					$("#InterestDiv").empty();
 					loadApi()
 				});
+
 				$('.chips').on('chip.select', function (e, chip) {
 					// you have the selected chip here
 				});
+
 				$('.chips').material_chip();
+
 				$('.chips-placeholder').material_chip({
 					placeholder: 'Enter an interest',
 					secondaryPlaceholder: '+ interest',
 				});
-
-				name = user.displayName;
-				email = user.email;
-				emailVerified = user.emailVerified;
-				uid = uid; // The user's ID, unique to the Firebase project. Do NOT use
-				// this value to authenticate with your backend server, if
-				// you have one. Use User.getToken() instead.
-
-				database.ref(uid).set({
-					name: name,
-					email: email,
-					uid: uid,
-					interest: interest,
-				});
-
-				$("#idName").text(name);
-				$("#idUrl").text(email);
-
-				// // -- Image Upload -- //
-
-				// //Get elements
-				// var uploader = $("#uploader");
-				// var fileButton = $("#fileButton");
-
-				// //Listen for file selection
-				// fileButton.on("change", function (e) {
-				// 	// Get the file
-				// 	var file = e.target.files[0];
-				// 	console.log(e.target.files[0].name);
-
-				// 	// Create a storage ref
-				// 	var storageRef = firebase.storage().ref("profile_pic/" + file.name);
-
-				// 	// Upload file
-				// 	var task = storageRef.put(file);
-
-				// 	// Update progress bar 
-				// 	task.on('state_changed',
-
-				// 		function error(err) {
-
-				// 		},
-				// 		function complete() {
-				// 			profilePic = task.snapshot.profilePic;
-				// 			console.log("---");
-				// 			console.log(profilePic);
-				// 			console.log("---");
-				// 			$("#profilePicture").attr("src", profilePic);
-				// 			var userPhoto = user + "/" + profilePic;
-				// 			database.ref(userPhoto).set({ profilePic: profilePic });
-				// 		}
-				// 	);
-				// });
 			}
 		} else {
+			// No user is signed in, redirect to homepage.
 			// window.location.href = "../../index.html"
-			// No user is signed in.
 			console.log("User profile not made.");
 		}
 	});
+
+	// -- Sign Out -- //
 	$(".signOut").on("click", function () {
 		firebase.auth().signOut().then(function () {
 			console.log("signed out");
 		}).catch(function (error) {
 			window.location.assign("https://blankcanvas-43876.firebaseapp.com/");
-			console.log("Whoops. An error occured");
+			console.log("Whoops. An error occurred");
 		});
 	})
-
-
-	// firebase.auth().currentUser.push({ interest: interest });
-	//firebase.database().ref().child(firebase.auth().currentUser).push({ interest: interest });
-	//firebase.database().ref().child(uid).push({ interest: interest });
-	//firebase.database().ref().child('uid').push({ interest: interest });
-	//database.ref().child(this.uid).push({ interest: interest });
-	//firebase.database().ref().user.push({ interest: interest });
-	//firebase.database().ref().child(user).push({ interest: interest });
-	//firebase.database().ref().child(user).push({ interest: interest });
-	//database.ref().push({ interest: interest })
-	//database.ref(user.uid).push({ interest: interest })
-	//user.push({ interest: interest });
-	//database.ref().currentUser.push({ interest: interest });
-	//database.ref(uid).push({ interest: interest })
-	// Google Custom Search:
-
-	// function loadApi() {	
-	// 	var cx = '002690778075665955245:ytl48lknafo';
-	// 	var queryURL = "https://www.googleapis.com/customsearch/v1?key=" +
-	// 		"AIzaSyDhBFUxT1VXUOEMHmPtB7LiVuxQXwrH_9I&cx=" + cx + "&q=" + apiInterest;
-	// 	$.ajax({
-	// 		url: queryURL,
-	// 		method: "GET"
-	// 	}).then(function (response) {
-	// 		console.log(response);
-	// 		var results = response.items;
-	// 		for (var i = 0; i < 1; i++) {
-	// 			$("#InterestDiv").prepend(`<div class="row collection-item">
-	// 																		<div class="col s10 m10 l10">
-	// 																				<li >
-	// 																				<span class="title">${results[i].title}</span>
-	// 																				</li>
-	// 																		</div>
-	// 																		<div class="col s2 m2 l2">
-	// 																				<a href="#!" class="secondary-content">  
-	// 																				<input type="checkbox" id="saveThis" class="saveCheckbox" />
-	// 																				<label for="saveThis">Save</label>
-	// 																		</div>
-	// 																</div>`
-
-	// 			)
-	// 		};
-	// 	});
-	// }
 
 }); // end doc ready
