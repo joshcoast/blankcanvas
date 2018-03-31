@@ -82,7 +82,7 @@
 												<div class="row">
 													<div class="input-field col s12">
 														<i class="material-icons prefix">assignment_ind</i>
-														<input id="name" type="text" class="validate">
+														<input id="title" type="text" class="validate">
 														<label for="title">Title</label>
 													</div>
 												</div>
@@ -265,13 +265,26 @@
 	</div>
 
 
-
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
 	<script src="assets/javascript/logic.js"></script>
 	<script src="https://apis.google.com/js/api.js"></script>
+	
+	<script>
+	$('.modal').modal({
+		dismissible: false, // Modal can be dismissed by clicking outside of the modal
+		opacity: .1, // Opacity of modal background
+		inDuration: 300, // Transition in duration
+		outDuration: 200, // Transition out duration
+		startingTop: '4%', // Starting top style attribute
+		endingTop: '10%', // Ending top style attribute
+		ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+			console.log(modal, trigger);
+		},
+	});
+	</script>
 
 </body>
 

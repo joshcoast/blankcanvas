@@ -24,7 +24,19 @@ $(document).ready(function () {
 	var user = firebase.auth().currentUser;
 	var name, email, uid, emailVerified, profilePic;
 
+	$("#start").on("click", function () {
+		var firstName = $("#first_name").val();
+		var lastName = $("#last_name").val();
+		var title = $("#title").val();
+		var website = $("#website").val();
+		var file = $("#file").val();
 
+		$("#idName").append(firstName);
+		// $("#last_name").text(lastName);
+		$("#idTitle").text(title);
+		$("idUrl").text(website);
+		// $("#file").text(file);
+	})
 
 	firebase.auth().onAuthStateChanged(function (user) {
 		// database.ref().push({user});
@@ -153,8 +165,8 @@ $(document).ready(function () {
 		firebase.auth().signOut().then(function () {
 			console.log("signed out");
 		}).catch(function (error) {
+			window.location.href="../../404.html"
 			console.log("Whoops. An error occured");
-			// An error happened.
 		});
 	})
 
